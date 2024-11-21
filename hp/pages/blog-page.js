@@ -16,14 +16,25 @@
   これにより、どのコンポーネントがページとして使用されるかが明確になる。
 */
 
-import { Layout } from "@/components/Layout";
+import Layout from "@/components/Layout";
+import Post from "@/components/Post";
+import { getAllPostData } from "@/lib/posts";
 
-const Blog = () => {
+const Blog = ({ posts }) => {
   return (
     <Layout title="Blog">
-      <div>Blog page</div>
+      <ul className="m-10">
+        {posts && posts.map((post) => <Post key={post.id} post={post} />)}
+      </ul>
     </Layout>
   );
 };
 
 export default Blog;
+
+export async function getStaticProps() {
+  const posts = await getAllPostData();
+  return {
+    props: { posts },
+  };
+}
