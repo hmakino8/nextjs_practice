@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "include": ["./**/*.js", "./**/*.ts", "./**/*.jsx", "./**/*.tsx"]
+  }
+}
